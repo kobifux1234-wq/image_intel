@@ -64,6 +64,7 @@ def extract_metadata(image_path):
     Returns:
         dict עם: filename, datetime, latitude, longitude,
               camera_make, camera_model, has_gps
+              .........
     """
     path = Path(image_path)
 
