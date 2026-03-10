@@ -2,6 +2,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 from pathlib import Path
 import os
+from geopy.geocoders import Nominatim
 
 """
 extractor.py - שליפת EXIF מתמונות
@@ -52,6 +53,24 @@ def camera_model(data: dict):
     except:
         return None
 
+def location(data: dict):
+    try:
+        lat = latitude(data)
+        lon = longitude(data)
+
+        if lat is None or lon is None:
+            return None
+
+        geolocator = Nominatim(user_agent="image_intel")
+        my_location = geolocator.reverse((lat, lon))
+
+        if my_location is None:
+            return None
+
+        return my_location.address
+
+    except Exception:
+        return None
 
 def extract_metadata(image_path):
     """
@@ -82,7 +101,8 @@ def extract_metadata(image_path):
             "longitude": None,
             "camera_make": None,
             "camera_model": None,
-            "has_gps": False
+            "has_gps": False,
+            "location": None
         }
 
     data = {}
@@ -99,7 +119,8 @@ def extract_metadata(image_path):
         "longitude": longitude(data),
         "camera_make": camera_make(data),
         "camera_model": camera_model(data),
-        "has_gps": has_gps(data)
+        "has_gps": has_gps(data),
+        "location" : location(data)
     }
     return exif_dict
 

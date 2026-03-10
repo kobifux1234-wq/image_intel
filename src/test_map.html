@@ -1,0 +1,629 @@
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_ce2f227e8b8fbe018b3ccc923f956920 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_ce2f227e8b8fbe018b3ccc923f956920&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_ce2f227e8b8fbe018b3ccc923f956920 = L.map(
+                &quot;map_ce2f227e8b8fbe018b3ccc923f956920&quot;,
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 1,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_dea8e17265765dd8fcc5500914729af1 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_dea8e17265765dd8fcc5500914729af1.addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_44884f14ea9b6734538832cca2396b9b = L.marker(
+                [32.0853, 34.7818],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_b19900cd8ac491ef401e764bd1105887 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_436a24087c1f04b1d6d31dab4949f931 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_9da29efe8aca8431f040f632c6bbdb7e = $(`&lt;div id=&quot;html_9da29efe8aca8431f040f632c6bbdb7e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_001.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_001.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-12 08:30:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_436a24087c1f04b1d6d31dab4949f931.setContent(html_9da29efe8aca8431f040f632c6bbdb7e);
+            
+        
+
+        marker_44884f14ea9b6734538832cca2396b9b.bindPopup(popup_436a24087c1f04b1d6d31dab4949f931)
+        ;
+
+        
+    
+    
+                marker_44884f14ea9b6734538832cca2396b9b.setIcon(icon_b19900cd8ac491ef401e764bd1105887);
+            
+    
+            var marker_cf7efa59659a358cc2dc3cd53fc9ca70 = L.marker(
+                [32.0804, 34.7805],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_e63f64a506422f4a956d77e5a9772db4 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_996f0c83dd4f927cb6034231917ba9f5 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_9f28e6000c137600cf7a70aac1c8b3ac = $(`&lt;div id=&quot;html_9f28e6000c137600cf7a70aac1c8b3ac&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_002.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_002.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-12 11:15:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_996f0c83dd4f927cb6034231917ba9f5.setContent(html_9f28e6000c137600cf7a70aac1c8b3ac);
+            
+        
+
+        marker_cf7efa59659a358cc2dc3cd53fc9ca70.bindPopup(popup_996f0c83dd4f927cb6034231917ba9f5)
+        ;
+
+        
+    
+    
+                marker_cf7efa59659a358cc2dc3cd53fc9ca70.setIcon(icon_e63f64a506422f4a956d77e5a9772db4);
+            
+    
+            var poly_line_9f4dd8aa0a069c32fa547c168945c3d8 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_786d35a6a7d556ff38a941e406240272 = L.marker(
+                [32.0667, 34.7667],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_285f975dee0616c91113f9bb90f50a75 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_ac95c82cfd62a67a23df5e1ad146c8eb = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_4bdaa75c426ba880413164b1a2f83dab = $(`&lt;div id=&quot;html_4bdaa75c426ba880413164b1a2f83dab&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_003.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_003.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-12 14:00:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_ac95c82cfd62a67a23df5e1ad146c8eb.setContent(html_4bdaa75c426ba880413164b1a2f83dab);
+            
+        
+
+        marker_786d35a6a7d556ff38a941e406240272.bindPopup(popup_ac95c82cfd62a67a23df5e1ad146c8eb)
+        ;
+
+        
+    
+    
+                marker_786d35a6a7d556ff38a941e406240272.setIcon(icon_285f975dee0616c91113f9bb90f50a75);
+            
+    
+            var poly_line_0f457db56fdbb275b241befbb4691d70 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_9762ee60f562af2572bd176eaca38f7b = L.marker(
+                [31.7683, 35.2137],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_7f18863d7147bf08d7de6815326c040a = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_cde530a433b0d0c0894912f18fa72b2b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_d51bb23f018f1378e24271e08471876c = $(`&lt;div id=&quot;html_d51bb23f018f1378e24271e08471876c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_004.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_004.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-13 09:00:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; iPhone 15 Pro             &lt;/div&gt;`)[0];
+                popup_cde530a433b0d0c0894912f18fa72b2b.setContent(html_d51bb23f018f1378e24271e08471876c);
+            
+        
+
+        marker_9762ee60f562af2572bd176eaca38f7b.bindPopup(popup_cde530a433b0d0c0894912f18fa72b2b)
+        ;
+
+        
+    
+    
+                marker_9762ee60f562af2572bd176eaca38f7b.setIcon(icon_7f18863d7147bf08d7de6815326c040a);
+            
+    
+            var poly_line_3b7368a8f963726495798d2d15038f1a = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_ae3340ac47006fde7b5621266d4ce291 = L.marker(
+                [31.778, 35.2354],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_a85e933c5b98f751502a47aa1d9b5227 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_061c1c6fd4cffc8915f85b0183ff0573 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_e9afeb5793b43f6359e0023df73e89e9 = $(`&lt;div id=&quot;html_e9afeb5793b43f6359e0023df73e89e9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_005.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_005.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-13 12:30:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; iPhone 15 Pro             &lt;/div&gt;`)[0];
+                popup_061c1c6fd4cffc8915f85b0183ff0573.setContent(html_e9afeb5793b43f6359e0023df73e89e9);
+            
+        
+
+        marker_ae3340ac47006fde7b5621266d4ce291.bindPopup(popup_061c1c6fd4cffc8915f85b0183ff0573)
+        ;
+
+        
+    
+    
+                marker_ae3340ac47006fde7b5621266d4ce291.setIcon(icon_a85e933c5b98f751502a47aa1d9b5227);
+            
+    
+            var poly_line_cef138319c3c735ed40531d7f9a7a165 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_5c32620cd98c9e50c70a6b1f9e1d6baa = L.marker(
+                [31.7742, 35.2258],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_5d8f0d4e60bb995cac33ff909834c7ff = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_3da30e772d35ad64c96628332acf1344 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_fb6c5b272369faccdc222bcc67431433 = $(`&lt;div id=&quot;html_fb6c5b272369faccdc222bcc67431433&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_006.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_006.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-13 16:45:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; iPhone 15 Pro             &lt;/div&gt;`)[0];
+                popup_3da30e772d35ad64c96628332acf1344.setContent(html_fb6c5b272369faccdc222bcc67431433);
+            
+        
+
+        marker_5c32620cd98c9e50c70a6b1f9e1d6baa.bindPopup(popup_3da30e772d35ad64c96628332acf1344)
+        ;
+
+        
+    
+    
+                marker_5c32620cd98c9e50c70a6b1f9e1d6baa.setIcon(icon_5d8f0d4e60bb995cac33ff909834c7ff);
+            
+    
+            var poly_line_2746ec7b7c401d86844ea3a69a1fd1ae = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_1c46719006ed01ba53d66c132a5d46ae = L.marker(
+                [32.794, 34.9896],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_e2ae95fd9bee3b002e98d431151d16dc = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_0dde37b480cdadc7e930cc10ee79120b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_1d2f264cae1c0e5d88503ca484afb123 = $(`&lt;div id=&quot;html_1d2f264cae1c0e5d88503ca484afb123&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_007.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_007.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-14 10:00:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; iPhone 15 Pro             &lt;/div&gt;`)[0];
+                popup_0dde37b480cdadc7e930cc10ee79120b.setContent(html_1d2f264cae1c0e5d88503ca484afb123);
+            
+        
+
+        marker_1c46719006ed01ba53d66c132a5d46ae.bindPopup(popup_0dde37b480cdadc7e930cc10ee79120b)
+        ;
+
+        
+    
+    
+                marker_1c46719006ed01ba53d66c132a5d46ae.setIcon(icon_e2ae95fd9bee3b002e98d431151d16dc);
+            
+    
+            var poly_line_6e16a69264273f38f6a0811f4966e6fb = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_be65f90bb4bbe8aefde9cd86369dd05a = L.marker(
+                [32.8115, 34.9986],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_feb2c92f8d96310040dbe703b14538d1 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;beige&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_21cc88ab514538bc4c9b451096ff7f9e = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_97029dca2f101f78f0fcb2e4e315f58d = $(`&lt;div id=&quot;html_97029dca2f101f78f0fcb2e4e315f58d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_008.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_008.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-14 13:30:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; EOS R5             &lt;/div&gt;`)[0];
+                popup_21cc88ab514538bc4c9b451096ff7f9e.setContent(html_97029dca2f101f78f0fcb2e4e315f58d);
+            
+        
+
+        marker_be65f90bb4bbe8aefde9cd86369dd05a.bindPopup(popup_21cc88ab514538bc4c9b451096ff7f9e)
+        ;
+
+        
+    
+    
+                marker_be65f90bb4bbe8aefde9cd86369dd05a.setIcon(icon_feb2c92f8d96310040dbe703b14538d1);
+            
+    
+            var poly_line_a9a0d8918b676f16f343d4be711909be = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_5c72d941fac43954958d1f583154e4ea = L.marker(
+                [31.253, 34.7915],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_c23919cbc317a00257bc9e9f7376095e = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_2685f67e759e1030d7f66d320cf8b340 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_31286e826b7072eaeb31e4c1e15b679b = $(`&lt;div id=&quot;html_31286e826b7072eaeb31e4c1e15b679b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_009.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_009.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-15 09:30:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_2685f67e759e1030d7f66d320cf8b340.setContent(html_31286e826b7072eaeb31e4c1e15b679b);
+            
+        
+
+        marker_5c72d941fac43954958d1f583154e4ea.bindPopup(popup_2685f67e759e1030d7f66d320cf8b340)
+        ;
+
+        
+    
+    
+                marker_5c72d941fac43954958d1f583154e4ea.setIcon(icon_c23919cbc317a00257bc9e9f7376095e);
+            
+    
+            var poly_line_c877cff3c80784054163f0ef71bcc705 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986], [31.253, 34.7915]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_159fb0a078935db7d15f799636c2ae8d = L.marker(
+                [31.262, 34.8013],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_f38b08b01fd9f94da8f6ee7c588b5878 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_f0fcb2e8ef595d443af59ae7cae77266 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_d4a248b3fbdaa0e0f4d14c86e0537e18 = $(`&lt;div id=&quot;html_d4a248b3fbdaa0e0f4d14c86e0537e18&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_010.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_010.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-15 14:00:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_f0fcb2e8ef595d443af59ae7cae77266.setContent(html_d4a248b3fbdaa0e0f4d14c86e0537e18);
+            
+        
+
+        marker_159fb0a078935db7d15f799636c2ae8d.bindPopup(popup_f0fcb2e8ef595d443af59ae7cae77266)
+        ;
+
+        
+    
+    
+                marker_159fb0a078935db7d15f799636c2ae8d.setIcon(icon_f38b08b01fd9f94da8f6ee7c588b5878);
+            
+    
+            var poly_line_2cb978566e773f7f9c327307cdb4e039 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986], [31.253, 34.7915], [31.262, 34.8013]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_d4c783373a54dbfa6cf59c7e98d8bc2f = L.marker(
+                [29.5569, 34.9498],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_79d21d6f306abdb681a8edce93e2d279 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;red&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_5e3b34854f9dd6ce875abd34237119e6 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_108f50dc39d008c4529dad5aa0fc9da9 = $(`&lt;div id=&quot;html_108f50dc39d008c4529dad5aa0fc9da9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_011.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_011.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-16 11:00:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; Galaxy S23             &lt;/div&gt;`)[0];
+                popup_5e3b34854f9dd6ce875abd34237119e6.setContent(html_108f50dc39d008c4529dad5aa0fc9da9);
+            
+        
+
+        marker_d4c783373a54dbfa6cf59c7e98d8bc2f.bindPopup(popup_5e3b34854f9dd6ce875abd34237119e6)
+        ;
+
+        
+    
+    
+                marker_d4c783373a54dbfa6cf59c7e98d8bc2f.setIcon(icon_79d21d6f306abdb681a8edce93e2d279);
+            
+    
+            var poly_line_5c08d677531123c0e85f1236002e0b55 = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986], [31.253, 34.7915], [31.262, 34.8013], [29.5569, 34.9498]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var marker_c6aec3d8aa9e6afec8d4623dbcb0e586 = L.marker(
+                [29.54, 34.9415],
+                {
+}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            var icon_bec80223572f68172b5816065cf0c09a = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+        
+    
+        var popup_5bcc7615b0a1b78ff8b55ee7acbc1d74 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+        
+            
+                var html_299ad66a4edee68bc40d48c7347ee690 = $(`&lt;div id=&quot;html_299ad66a4edee68bc40d48c7347ee690&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;             &lt;img src=&#x27;../images/ready/IMG_012.jpg&#x27; width=&quot;200&quot;&gt;&lt;br&gt;             &lt;b&gt;Name:&lt;/b&gt; IMG_012.jpg&lt;br&gt;             &lt;b&gt;Time:&lt;/b&gt; 2025-01-16 15:30:00&lt;br&gt;             &lt;b&gt;Model&lt;/b&gt; iPhone 15 Pro             &lt;/div&gt;`)[0];
+                popup_5bcc7615b0a1b78ff8b55ee7acbc1d74.setContent(html_299ad66a4edee68bc40d48c7347ee690);
+            
+        
+
+        marker_c6aec3d8aa9e6afec8d4623dbcb0e586.bindPopup(popup_5bcc7615b0a1b78ff8b55ee7acbc1d74)
+        ;
+
+        
+    
+    
+                marker_c6aec3d8aa9e6afec8d4623dbcb0e586.setIcon(icon_bec80223572f68172b5816065cf0c09a);
+            
+    
+            var poly_line_72f144713dea81f463189c606274341c = L.polyline(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986], [31.253, 34.7915], [31.262, 34.8013], [29.5569, 34.9498], [29.54, 34.9415]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;blue&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 0.6, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_ce2f227e8b8fbe018b3ccc923f956920);
+        
+    
+            map_ce2f227e8b8fbe018b3ccc923f956920.fitBounds(
+                [[32.0853, 34.7818], [32.0804, 34.7805], [32.0667, 34.7667], [31.7683, 35.2137], [31.778, 35.2354], [31.7742, 35.2258], [32.794, 34.9896], [32.8115, 34.9986], [31.253, 34.7915], [31.262, 34.8013], [29.5569, 34.9498], [29.54, 34.9415]],
+                {&quot;maxZoom&quot;: 12}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
