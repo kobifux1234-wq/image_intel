@@ -67,7 +67,16 @@ def location(data: dict):
         if my_location is None:
             return None
 
-        return my_location.address
+        address = my_location.raw.get("address", {})
+
+        city = (
+                address.get("city")
+                or address.get("town")
+                or address.get("village")
+                or address.get("municipality")
+        )
+
+        return city
 
     except Exception:
         return None
