@@ -2,6 +2,35 @@ from extractor import extract_all
 from pathlib import Path
 
 
+def clean_text(value, default="Unknown"):
+    if not value:
+        return default
+    return str(value).replace("\x00", "").strip()
+
+
+def format_datetime(value):
+    if not value:
+        return "N/A"
+    return str(value)
+
+
+def format_location(value):
+    if not value:
+        return "Location does not exist."
+    return str(value)
+
+
+def build_device_name(img):
+    make = clean_text(img.get("camera_make"), "")
+    model = clean_text(img.get("camera_model"), "")
+
+    full_name = f"{make} {model}".strip()
+
+    if not full_name:
+        return "Unknown"
+    return full_name
+
+
 def build_events(images_data):
     sorted_data = sorted(images_data, key=lambda x: x.get("datetime") or "")
     events_html = ""
@@ -10,18 +39,27 @@ def build_events(images_data):
         filename = img.get("filename", "")
         image_path = f"../images/nigga/{filename}"
 
+        device_name = build_device_name(img)
+        location_text = format_location(img.get("location"))
+        date_text = format_datetime(img.get("datetime"))
+
         events_html += f"""
 <div class="event">
 
 <div class="date">
-{img.get('datetime', 'N/A')}
+{date_text}
 </div>
 
 <img src="{image_path}" class="photo" alt="{filename}">
 
 <div>
 <span class="label">Device:</span>
-{img.get('camera_model', 'Unknown')}
+{device_name}
+</div>
+
+<div>
+<span class="label">Location:</span>
+{location_text}
 </div>
 
 </div>
@@ -44,8 +82,8 @@ def generate_timeline_html(images_data):
 
 
 if __name__ == "__main__":
-    base_dir = Path(__file__).resolve().parent.parent
-    images_path = base_dir / "images" / "ready"
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    images_path = BASE_DIR / "images" / "nigga"
 
     print("Extracting data...")
     extracted_data = extract_all(str(images_path))
@@ -53,7 +91,7 @@ if __name__ == "__main__":
     print("Generating timeline...")
     final_html = generate_timeline_html(extracted_data)
 
-    output_dir = base_dir / "output"
+    output_dir = BASE_DIR / "output"
     output_dir.mkdir(exist_ok=True)
 
     output_file = output_dir / "timeline.html"
