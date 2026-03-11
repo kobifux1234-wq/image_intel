@@ -80,7 +80,7 @@ def create_map(images_data):
 
 if __name__ == "__main__":
     base_dir = Path(__file__).resolve().parent.parent
-    images_path = base_dir / "images" / "nigga"
+    images_path = base_dir / "images" / "ready"
 
     data = extractor.extract_all(str(images_path))
     html = create_map(data)

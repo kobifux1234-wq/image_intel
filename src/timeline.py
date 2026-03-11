@@ -123,7 +123,7 @@ def generate_timeline_html(images_data):
 
 def main():
     base_dir = Path(__file__).resolve().parent.parent
-    images_path = base_dir / "images" / "nigga"
+    images_path = base_dir / "images" / "sample_data"
 
     print("Extracting data...")
     extracted_data = extract_all(str(images_path))
