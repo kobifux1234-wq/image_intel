@@ -98,20 +98,41 @@ def location(lat, lon):
         return None
 
 
+import re
+from datetime import datetime
+
+
 def extract_date_from_filename(filename):
+    # הסרת תווים נסתרים ש-WhatsApp מוסיפה לעיתים (חשוב מאוד!)
+    filename = filename.replace('\u200e', '').replace('\u200f', '')
+
     patterns = [
-        (r"(\d{4}-\d{2}-\d{2}).*?(\d{2}\.\d{2}\.\d{2})", "%Y-%m-%d %H:%M:%S"),  # WhatsApp
-        (r"(\d{8}_\d{6})", "%Y%m%d_%H%M%S"),  # Samsung/Android
+        # WhatsApp: מחלץ תאריך (group 1) ושעה (group 2)
+        (r"(\d{4}-\d{2}-\d{2}).*?(\d{2}\.\d{2}\.\d{2})", "WhatsApp"),
+        # Samsung/Android
+        (r"(\d{8}_\d{6})", "%Y%m%d_%H%M%S"),
     ]
-    for pattern, fmt in patterns:
+
+    for pattern, label in patterns:
         match = re.search(pattern, filename)
         if match:
             try:
-                date_str = match.group(1).replace(".", ":") if "." in match.group(1) else match.group(1)
-                return datetime.strptime(date_str, fmt).strftime("%Y-%m-%d %H:%M:%S")
-            except:
+                if label == "WhatsApp":
+                    date_part = match.group(1)
+                    # הופך את הנקודות בשעה לנקודתיים
+                    time_part = match.group(2).replace(".", ":")
+                    combined = f"{date_part} {time_part}"
+                    return datetime.strptime(combined, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %H:%M:%S")
+                else:
+                    return datetime.strptime(match.group(1), label).strftime("%Y-%m-%d %H:%M:%S")
+            except Exception:
                 continue
     return None
+
+
+# בדיקה מהירה
+test_name = "תמונה של WhatsApp‏ 2024-06-08 בשעה 22.25.21_39231de9"
+print(extract_date_from_filename(test_name))
 
 
 def extract_metadata(image_path):

@@ -109,15 +109,131 @@ def build_events(images_data):
 
 
 def generate_timeline_html(images_data):
-    src_dir = Path(__file__).resolve().parent
-    template_path = src_dir / "templates" / "timeline_template.html"
-
-    with open(template_path, "r", encoding="utf-8") as f:
-        template_html = f.read()
-
     events_html = build_events(images_data)
-    final_html = template_html.replace("{{ EVENTS }}", events_html)
 
+    # Hardcoded HTML template with Heebo font and your original CSS
+    final_html = f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Intelligence Timeline</title>
+
+    <!-- Google Fonts: Heebo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+
+    <style>
+    body{{
+        font-family: 'Heebo', sans-serif; /* Applied Heebo here */
+        background: #eef2f3;
+        padding: 40px;
+    }}
+
+    h1{{
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+    }}
+
+    .timeline{{
+        border-left: 4px solid #3498db;
+        margin-left: 40px;
+        padding-left: 25px;
+    }}
+
+    .event{{
+        position: relative;
+        background: white;
+        padding: 18px;
+        margin-bottom: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 420px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }}
+
+    .event:hover{{
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    }}
+
+    .event::before{{
+        content: "";
+        position: absolute;
+        left: -33px;
+        top: 20px;
+        width: 14px;
+        height: 14px;
+        background: #3498db;
+        border-radius: 50%;
+    }}
+
+    .date{{
+        font-weight: bold;
+        color: #2980b9;
+        margin-bottom: 10px;
+    }}
+
+    .photo{{
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 10px 0;
+        display: block;
+    }}
+
+    .label{{
+        font-weight: bold;
+        color: #555;
+    }}
+
+    .device{{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+    }}
+
+    .device-logo{{
+        width: 42px;
+        height: 24px;
+        object-fit: contain;
+        display: block;
+    }}
+
+    .device-emoji{{
+        font-size: 24px;
+        line-height: 1;
+        display: inline-block;
+    }}
+
+    .location{{
+        margin-top: 6px;
+        line-height: 1.5;
+        word-break: break-word;
+    }}
+
+    a{{
+        text-decoration: none;
+        color: inherit;
+    }}
+    </style>
+</head>
+<body>
+
+<h1>Photo Timeline</h1>
+
+<div class="timeline">
+{events_html}
+</div>
+
+</body>
+</html>
+"""
     return final_html
 
 
