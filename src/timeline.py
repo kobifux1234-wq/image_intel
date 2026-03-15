@@ -46,19 +46,19 @@ def get_device_logo_html(img):
         return '<img src="../src/static/logos/apple.png" class="device-logo" alt="Apple logo">'
 
     if "samsung" in text or "galaxy" in text or "sm-" in text:
-        return '<img src="../src/static/logos/samsung.png" class="device-logo" alt="Samsung logo">'
+        return '<img src="/static/logos/samsung.png" class="device-logo" alt="Samsung logo">'
 
     if "canon" in text:
-        return '<img src="../src/static/logos/Canon.png" class="device-logo" alt="Canon logo">'
+        return '<img src="/static/logos/Canon.png" class="device-logo" alt="Canon logo">'
 
     if "sony" in text:
-        return '<img src="../src/static/logos/sony.png" class="device-logo" alt="Sony logo">'
+        return '<img src="/static/logos/sony.png" class="device-logo" alt="Sony logo">'
 
     if "lg" in text:
-        return '<img src="../src/static/logos/lg.png" class="device-logo" alt="LG logo">'
+        return '<img src="/static/logos/lg.png" class="device-logo" alt="LG logo">'
 
     if "xiaomi" in text or "redmi" in text:
-        return '<img src="../src/static/logos/xiaomi.png" class="device-logo" alt="Xiaomi logo">'
+        return '<img src="/static/logos/xiaomi.png" class="device-logo" alt="Xiaomi logo">'
 
     return '<span class="device-emoji" aria-label="camera">📷</span>'
 
@@ -73,7 +73,7 @@ def build_events(images_data):
 
     for img in sorted_data:
         filename = img.get("filename", "")
-        image_path = f"../images/nigga/{filename}"
+        image_path = f"/cache/{img['filename']}"
 
         device_name = build_device_name(img)
         device_logo_html = get_device_logo_html(img)
@@ -108,41 +108,43 @@ def build_events(images_data):
     return events_html
 
 
-def generate_timeline_html(images_data):
+def create_timeline(images_data):
+    # קריאה לפונקציית העזר
     events_html = build_events(images_data)
 
-    # Hardcoded HTML template with Heebo font and your original CSS
     final_html = f"""
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <title>Photo Intelligence Timeline</title>
-
-    <!-- Google Fonts: Heebo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-    body{{
-        font-family: 'Heebo', sans-serif; /* Applied Heebo here */
+    body {{
+        font-family: 'Heebo', sans-serif;
         background: #eef2f3;
         padding: 40px;
+        direction: rtl;    /* תיקון כיוון */
+        text-align: right; /* יישור לימין */
     }}
 
-    h1{{
+    h1 {{
         border-bottom: 3px solid #3498db;
         padding-bottom: 10px;
     }}
 
-    .timeline{{
-        border-left: 4px solid #3498db;
-        margin-left: 40px;
-        padding-left: 25px;
+    /* --- תיקון הקו הכחול לימין --- */
+    .timeline {{
+        border-right: 4px solid #1a73e8; 
+        border-left: none;
+        padding-right: 40px;
+        padding-left: 0;
+        margin-right: 25px;
+        margin-left: 0;
     }}
 
-    .event{{
+    .event {{
         position: relative;
         background: white;
         padding: 18px;
@@ -153,29 +155,33 @@ def generate_timeline_html(images_data):
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }}
 
-    .event:hover{{
+    .event:hover {{
         transform: translateY(-4px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.18);
     }}
 
-    .event::before{{
+    /* --- תיקון הנקודה הכחולה לימין --- */
+    .event::before {{
         content: "";
         position: absolute;
-        left: -33px;
+        right: -50px;  /* זז ימינה כדי לשבת על הקו */
+        left: auto;    /* ביטול ה-left הישן */
         top: 20px;
         width: 14px;
         height: 14px;
         background: #3498db;
         border-radius: 50%;
+        border: 3px solid #eef2f3;
     }}
 
-    .date{{
+    .date {{
         font-weight: bold;
         color: #2980b9;
         margin-bottom: 10px;
+        text-align: left; /* תאריך באנגלית נראה טוב יותר משמאל */
     }}
 
-    .photo{{
+    .photo {{
         width: 100%;
         height: 220px;
         object-fit: cover;
@@ -183,41 +189,27 @@ def generate_timeline_html(images_data):
         margin: 10px 0;
         display: block;
     }}
-
-    .label{{
+    .device-logo {{
+        height: 24px;
+        width: auto;
+        object-fit: contain;
+    }}
+    .label {{
         font-weight: bold;
         color: #555;
+        margin-left: 5px; /* רווח משמאל לנקודותיים */
     }}
 
-    .device{{
+    .device, .location {{
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
         margin-top: 8px;
         margin-bottom: 8px;
         flex-wrap: wrap;
     }}
 
-    .device-logo{{
-        width: 42px;
-        height: 24px;
-        object-fit: contain;
-        display: block;
-    }}
-
-    .device-emoji{{
-        font-size: 24px;
-        line-height: 1;
-        display: inline-block;
-    }}
-
-    .location{{
-        margin-top: 6px;
-        line-height: 1.5;
-        word-break: break-word;
-    }}
-
-    a{{
+    a {{
         text-decoration: none;
         color: inherit;
     }}
@@ -235,31 +227,3 @@ def generate_timeline_html(images_data):
 </html>
 """
     return final_html
-
-
-def main():
-    base_dir = Path(__file__).resolve().parent.parent
-    images_path = base_dir / "images" / "sample_data"
-
-    print("Extracting data...")
-    extracted_data = extract_all(str(images_path))
-
-    print("Generating timeline...")
-    final_html = generate_timeline_html(extracted_data)
-
-    output_dir = base_dir / "output"
-    output_dir.mkdir(exist_ok=True)
-
-    output_file = output_dir / "timeline.html"
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(final_html)
-
-    print("-" * 40)
-    print("SUCCESS!")
-    print(f"Timeline created at: {output_file}")
-    print("-" * 40)
-
-
-if __name__ == "__main__":
-    main()

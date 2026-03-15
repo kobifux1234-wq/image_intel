@@ -33,9 +33,9 @@ def create_map(images_data):
     for img in sorted_image_data:
         if img.get('latitude') is None or img.get('longitude') is None:
             continue
-
+        print(img)
         if img.get("has_gps"):
-            img_path = f"../images/nigga/{img['filename']}"
+            img_path = f"/cache/{img['filename']}"
             camera_model = img["camera_model"].replace('\x00', "")
 
             html_content = f"""
@@ -76,21 +76,3 @@ def create_map(images_data):
 
     header = '<meta http-equiv="content-type" content="text/html; charset=UTF-8" />'
     return header + m._repr_html_()
-
-
-if __name__ == "__main__":
-    base_dir = Path(__file__).resolve().parent.parent
-    images_path = base_dir / "images" / "sample_data"
-
-    data = extractor.extract_all(str(images_path))
-    html = create_map(data)
-
-    output_dir = base_dir / "output"
-    output_dir.mkdir(exist_ok=True)
-
-    output_file = output_dir / "test_map.html"
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html)
-
-    print(f"Map saved to {output_file}")

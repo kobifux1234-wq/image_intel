@@ -5,16 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f36bc43e-aaa4-4be8-bc24-632500096344" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ai_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/image_intel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/image_intel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/timeline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ready/IMG_001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_photos_map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_timeline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/test_map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/timeline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/Canon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/lg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/samsung.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/sony.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/logos/xiaomi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/timeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_map.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/timeline.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,23 +66,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.analyzer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.extractor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map_view.executor&quot;: &quot;Run&quot;,
-    &quot;Python.timeline.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;update/extractor&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.ai_analysis.executor": "Run",
+    "Python.analyzer.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.extractor.executor": "Run",
+    "Python.map_view.executor": "Run",
+    "Python.report.executor": "Run",
+    "Python.timeline.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/updateEx",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PythonProjectFinish\image_intel\src\temp_data" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -73,20 +109,5 @@
       <updated>1773131317982</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/map_view.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/analyzer.py</url>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
