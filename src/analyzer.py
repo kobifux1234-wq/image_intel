@@ -2,6 +2,7 @@ from datetime import datetime
 from geopy.distance import geodesic
 import pprint
 from extractor import *
+
 def analyze_data(data):
     # אם אין נתונים, נחזיר מילון ריק כדי שהקוד לא יקרוס
     if not data:
@@ -85,7 +86,7 @@ if __name__ == "__main__":
 
 
     base_path = Path(__file__).resolve().parent.parent
-    images_path = base_path / "images" / "ready"
+    images_path = base_path / "images" / "nigga"
 
     extracted_data = extract_all(str(images_path))
 

@@ -2,7 +2,6 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <!-- תיקון: היה initial-width=1.0 במקום initial-scale=1.0 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Intel - מודיעין חזותי</title>
     <style>
@@ -13,6 +12,7 @@
             --accent-color: #38bdf8;
             --accent-hover: #0284c7;
             --border-color: #475569;
+            --input-bg: #334155;
         }
 
         body {
@@ -28,17 +28,17 @@
 
         .container {
             background-color: var(--container-bg);
-            padding: 50px;
+            padding: 40px;
             border-radius: 16px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             width: 100%;
-            max-width: 550px;
+            max-width: 500px;
             text-align: center;
         }
 
         h1 {
             color: var(--accent-color);
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin-bottom: 10px;
             margin-top: 0;
             letter-spacing: 2px;
@@ -46,15 +46,15 @@
 
         p {
             color: #94a3b8;
-            font-size: 1.1em;
-            margin-bottom: 40px;
+            font-size: 1em;
+            margin-bottom: 30px;
         }
 
         .file-drop-area {
             border: 2px dashed var(--border-color);
             border-radius: 12px;
-            padding: 50px 20px;
-            margin-bottom: 25px;
+            padding: 40px 20px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
             background-color: rgba(255, 255, 255, 0.02);
             cursor: pointer;
@@ -66,14 +66,14 @@
         }
 
         .file-msg {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #cbd5e1;
             display: block;
             margin-bottom: 10px;
         }
 
         .file-msg-sub {
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #64748b;
         }
 
@@ -81,19 +81,74 @@
             display: none;
         }
 
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-color);
+        }
+
+        /* עיצוב תיבת ה-API KEY */
+        #gemini-input-container {
+            display: none; /* מוסתר בהתחלה */
+            text-align: right;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label[for="gemini-key"] {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            color: var(--accent-color);
+        }
+
+        .api-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .api-input:focus {
+            border-color: var(--accent-color);
+        }
+
         .submit-btn {
             background-color: var(--accent-color);
             color: #0f172a;
             border: none;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
@@ -115,6 +170,20 @@
                 <input type="file" name="photos" id="file-input" multiple accept="image/*">
             </div>
 
+            <label class="checkbox-container">
+                <input type="checkbox" name="extended_search" id="extended-search-checkbox">
+                <span>אני מעוניין בחיפוש מורחב</span>
+            </label>
+
+            <!-- תיבת הקלט החדשה שתופיע -->
+            <div id="gemini-input-container">
+                <label for="gemini-key">
+    הזן מפתח API של Gemini
+    (<a href="https://aistudio.google.com" target="_blank" style="color: var(--accent-color); text-decoration: underline;">להנפקת מפתח לחץ כאן</a>):
+</label>
+                <input type="password" name="gemini_key" id="gemini-key" class="api-input" placeholder="הדבק את המפתח כאן...">
+            </div>
+
             <button type="submit" class="submit-btn">התחל ניתוח מודיעיני</button>
         </form>
     </div>
@@ -123,26 +192,35 @@
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('file-input');
     const fileMsg = document.getElementById('file-msg');
-    const fileMsgSub = document.getElementById('file-msg-sub');
+    const extendedCheckbox = document.getElementById('extended-search-checkbox');
+    const geminiContainer = document.getElementById('gemini-input-container');
 
+    // לוגיקה להצגת/הסתרת תיבת ה-API
+    extendedCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            geminiContainer.style.display = 'block';
+        } else {
+            geminiContainer.style.display = 'none';
+        }
+    });
+
+    // ניהול קבצים
     const filesMap = new Map();
 
     dropArea.addEventListener('click', () => fileInput.click());
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
+        dropArea.addEventListener(eventName, e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
     });
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
 
     ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'), false);
+        dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'));
     });
     ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, () => dropArea.classList.remove('dragover'), false);
+        dropArea.addEventListener(eventName, () => dropArea.classList.remove('dragover'));
     });
 
     function addFilesToList(newFiles) {
@@ -150,37 +228,23 @@
             const file = newFiles[i];
             filesMap.set(file.name, file);
         }
-
         const dt = new DataTransfer();
-        filesMap.forEach((file) => {
-            dt.items.add(file);
-        });
-
+        filesMap.forEach(file => dt.items.add(file));
         fileInput.files = dt.files;
         updateFileName();
     }
 
-    dropArea.addEventListener('drop', (e) => {
-        addFilesToList(e.dataTransfer.files);
-    });
-
-    fileInput.addEventListener('change', (e) => {
-        const selectedFiles = e.target.files;
-        if (selectedFiles.length > 0) {
-            addFilesToList(selectedFiles);
-        }
-    });
+    dropArea.addEventListener('drop', e => addFilesToList(e.dataTransfer.files));
+    fileInput.addEventListener('change', e => addFilesToList(e.target.files));
 
     function updateFileName() {
         const totalFiles = fileInput.files.length;
         if (totalFiles > 0) {
             fileMsg.textContent = "נצברו " + totalFiles + " תמונות";
             fileMsg.style.color = "var(--accent-color)";
-            fileMsgSub.textContent = "אפשר להמשיך להוסיף, תמונות זהות הוחלפו אוטומטית";
         } else {
             fileMsg.textContent = "לחץ כאן או גרור תמונות לכאן";
             fileMsg.style.color = "#cbd5e1";
-            fileMsgSub.textContent = "אפשר לבחור כמה תמונות יחד";
         }
     }
     </script>

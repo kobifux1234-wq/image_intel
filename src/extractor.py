@@ -103,11 +103,9 @@ from datetime import datetime
 
 
 def extract_date_from_filename(filename):
-    # הסרת תווים נסתרים ש-WhatsApp מוסיפה לעיתים (חשוב מאוד!)
     filename = filename.replace('\u200e', '').replace('\u200f', '')
 
     patterns = [
-        # WhatsApp: מחלץ תאריך (group 1) ושעה (group 2)
         (r"(\d{4}-\d{2}-\d{2}).*?(\d{2}\.\d{2}\.\d{2})", "WhatsApp"),
         # Samsung/Android
         (r"(\d{8}_\d{6})", "%Y%m%d_%H%M%S"),
@@ -119,7 +117,6 @@ def extract_date_from_filename(filename):
             try:
                 if label == "WhatsApp":
                     date_part = match.group(1)
-                    # הופך את הנקודות בשעה לנקודתיים
                     time_part = match.group(2).replace(".", ":")
                     combined = f"{date_part} {time_part}"
                     return datetime.strptime(combined, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %H:%M:%S")
@@ -129,10 +126,6 @@ def extract_date_from_filename(filename):
                 continue
     return None
 
-
-# בדיקה מהירה
-test_name = "תמונה של WhatsApp‏ 2024-06-08 בשעה 22.25.21_39231de9"
-print(extract_date_from_filename(test_name))
 
 
 def extract_metadata(image_path):
